@@ -1,40 +1,47 @@
+LAB-SFLOW 
 
-1. Mục tiêu bài lab
+
+
+I. Mục tiêu bài lab
 
   - Moitor lưu lượng mạng gửi tới và đi của VM1, VM2 sử dụng công nghệ sFlow
   - Tìm hiểu được cách sử dụng công cụ sFlow để monitor Open vSwitch
   - Hiểu được các kết quả trả về của công cụ sFlow
-2.Mô hình LAB :
+II. Mô hình LAB :
   
    <img src="http://i.imgur.com/s889R4C.png">
  
  *. Cấu hình mạng cho HOST1:
  <img src="http://i.imgur.com/aC8MzYs.png">
-3. Cài đặt: .
-Cài đặt các gói sau:
-- Cai goi KVM :
+
+III. Cài đặt: .
+Cài đặt các gói cần thiết :
+
+- Cài gói KVM :
 ```
 sudo apt-get install -y kvm libvirt-bin pm-utils
 ```
-- Cai goi openvswitch :
+- Cài gói openvswitch :
+
 ``` 
  apt-get install -y openvswitch-switch openvswitch-datapath-dkms
 ```
-Tạo brigde br0:
+Tạo brigde br0:
+
 ```
  sudo ovs-vsctl add-br br0
 ```
-Thêm port eth0 vào br0 :
+- Thêm port eth0 vào br0 :
 ```
  ovs-vsctl add-port br0 eth0
 ```
-Sau khi thực hiện câu lệnh trên thì card eth0 sẽ mất kết nối, ta cần xóa IP của card eth0 và lấy IP đó đặt cho card br0
+- Sau khi thực hiện câu lệnh trên thì card eth0 sẽ mất kết nối, ta cần xóa IP của card eth0 và lấy IP đó đặt cho card br0
 ```
 ifconfig eth0 0.0.0.0
 ifconfig br0 172.16.69.25/24
 ```
 
-Tạo hai máy ảo:
+- Tạo hai máy ảo:
 ```
 wget http://cdn.download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
 mv cirros-0.3.0-x86_64-disk.img cirros1.img
@@ -42,9 +49,9 @@ cp cirros1.img cirros2.img
 kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:12 -net tap cirros1.img  –nographic
 kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:13 -net tap cirros2.img  –nographic
 ```
-Sau khi tạo mỗi VM thì sẽ bị mất phiên ssh vào máy chủ, thay vào đó sẽ là phiên của mỗi máy ảo, ta cần mở một kết nối khác tới máy chủ để cấu hình.
+- Sau khi tạo mỗi VM thì sẽ bị mất phiên ssh vào máy chủ, thay vào đó sẽ là phiên của mỗi máy ảo, ta cần mở một kết nối khác tới máy chủ để cấu hình.
 
-Ta tạo một file mới có tên là sflow.sh với nội dung như sau:
+- Ta tạo một file mới có tên là sflow.sh với nội dung như sau:
 
 ```
 #Set parameters switch to connect to COLLECTOR
@@ -75,3 +82,14 @@ ovs-vsctl list sflow
 ```
 ovs-vsctl remove bridge br0 sflow $SFLOWUUID
 ```
+
+IV. Cài đặt trên máy Monitor :
+
+1. Cài đặt Java và tạo môi trường :
+```
+
+```
+
+
+
+
