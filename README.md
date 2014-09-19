@@ -5,9 +5,12 @@
   - Tìm hiểu được cách sử dụng công cụ sFlow để monitor Open vSwitch
   - Hiểu được các kết quả trả về của công cụ sFlow
 2.Mô hình LAB :
+  
+   <img src="http://i.imgur.com/s889R4C.png">
  
- <img src="http://i.imgur.com/s889R4C.png">
- 
+ *. Cấu hình mạng cho HOST1:
+ <img src="http://i.imgur.com/aC8MzYs.png">
+3. Cài đặt: .
 Cài đặt các gói sau:
 - Cai goi KVM :
 ```
