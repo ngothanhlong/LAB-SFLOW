@@ -1,4 +1,5 @@
 
+II. LAB
 1. Mục tiêu bài lab
 
   - Moitor lưu lượng mạng gửi tới và đi của VM1, VM2 sử dụng công nghệ sFlow
@@ -93,14 +94,14 @@ ovs-vsctl list sflow
 ovs-vsctl remove bridge br0 sflow $SFLOWUUID
 ```
 
-IV. CÀI ĐẶT TRÊN MÁY MONITOR :
+4. CÀI ĐẶT TRÊN MÁY MONITOR :
 
 - Cài gói java : Tải gói java từ trang chủ [hướng dẫn] (http://www.java.com/en/download/help/windows_manual_download.xml)
 - Tải gói sflowTrend-1.jnlp  để monitor card br0 trong HOST A
 Giao diện chương trinh:
 <img src="http://i.imgur.com/e1qHcfo.png">
 
-V.TEST:
+5.TEST:
 - Thực hiện ping từ VM1 -> google.com xem sự thay đổi biểu đồ trên máy monitor :
 ```
 <img src="http://i.imgur.com/afuaOMZ.png">
